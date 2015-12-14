@@ -74,4 +74,8 @@ class Model{
         return $rows[0]["id"];
     }
 
+    public function delete($id){
+        return $this->query("DELETE FROM $this->table where id = ?",$id);
+    }
+
 }
