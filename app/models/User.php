@@ -13,5 +13,9 @@ class User extends Model{
 		return $this->query("SELECT * FROM users WHERE username = ?", $username);
 	}
 
+	public function insert($username,$hash){
+		return $this->query("INSERT INTO users(username, hash) VALUES(?,?)",$username , $hash);
+	}
+
 	
 }

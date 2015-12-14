@@ -1,6 +1,6 @@
 <?php
 
-    define("DATABASE", "rtssdb");
+    define("DATABASE", "newsdb");
 
     // your database's username
     define("USERNAME", "root");

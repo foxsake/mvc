@@ -69,4 +69,9 @@ class Model{
         return $this->query("SELECT * FROM $this->table where id = ?",$id);
     }
 
+    public function last_insert_id(){
+        $rows = $this->query("SELECT LAST_INSERT_ID() AS id");
+        return $rows[0]["id"];
+    }
+
 }

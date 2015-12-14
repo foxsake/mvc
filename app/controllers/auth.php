@@ -5,7 +5,7 @@
 */
 class Auth extends Controller{
 	
-	function logout(){
+	public function logout(){
         // unset any session variables
         $_SESSION = [];
 
@@ -20,12 +20,12 @@ class Auth extends Controller{
         $this->redirect('/mvc/public');
     }
 
-    function login(){
+    public function login(){
         if(!empty($_SESSION["id"])){
             $this->redirect('/mvc/public/');
         }
         $model = $this->model('User');
-    	//TODO
+
     	if ($_SERVER["REQUEST_METHOD"] == "POST"){
         // validate submission
         if (empty($_POST["username"])){
@@ -59,5 +59,35 @@ class Auth extends Controller{
     else{
         $this->render("login_form", ["title" => "Log In"]);
     }
+    }
+
+    public function register(){
+        $users = $this->model('User');
+        // if form was submitted
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            if(empty($_POST["username"])){
+                $this->apologize("You must provide your username.");
+            }else if (empty($_POST["password"])){
+                $this->apologize("You must provide your password.");
+            }else if (empty($_POST["confirmation"])){
+                $this->apologize("You must retype your password.");
+            }else if($_POST["password"] != $_POST["confirmation"]){
+                $this->apologize("Your passwords must match.");
+            }
+
+            $suc = $users->insert($_POST["username"],crypt($_POST["password"]));
+            
+            if($suc === false){
+                $this->apologize("Username already taken.");
+            }else{
+                $id = $users->last_insert_id();
+                $_SESSION["id"] = $id;
+                $_SESSION["username"] = $_POST["username"];
+                $this->redirect("/mvc/public/");
+            }       
+        }else{
+            // else render form
+            $this->render("register_form", ["title" => "Register"]);
+        }
     }
 }
