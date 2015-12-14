@@ -1,0 +1,112 @@
+.container
+{
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+table{
+    text-align: left;
+}
+
+#middle .form-control{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+#bottom{
+    /* shrink bottom's font size */
+    font-size: smaller;
+
+    /* surround with whitespace */
+    margin: 20px;
+}
+
+#top{
+    margin-top: 100px;
+}
+
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {    /* used to be tt-dropdown-menu in older versions */
+  width: 422px;
+  margin-top: 4px;
+  padding: 4px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor,.tt-suggestion:hover {
+  color: #fff;
+  background-color: #2c3e50;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.trunwrap{
+  height: 2em;
+}
+
+ul.nav li#itemlink:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+@media (min-width: 979px) {
+  ul.nav li#itemlink:hover > ul.dropdown-menu {
+    display: block;
+  }
+}
+
+.pink{
+  color:pink;
+}
+
+.img-thumbnail{
+  max-width: 28px;
+}
+
+.rpad{
+  margin-right: 10px;
+}
+
+.padd-bot{
+  margin-bottom: 10px;
+}
+
+.logoimg{
+  width: 190px;
+  height: 190px;
+}
+
+#tdcenter{
+  text-align: center; 
+  vertical-align: middle;
+}
