@@ -10,12 +10,12 @@ class Controller{
 	public function view($view,$data=[]){
 		require_once '../app/views/'.$view.'.php';
 	}
-
+    //die dump
 	public function dd($variable){
 		require_once '../app/views/dump.php';
 		exit;
 	}
-
+    //print ng sorry
 	function apologize($message)
     {
         $this->render("apology", ["message" => $message]);
