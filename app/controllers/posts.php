@@ -3,6 +3,12 @@
 
 class Posts extends Controller{
 
+	public function __construct(){
+        if(isset($_POST["admin"]) && $_POST["admin"]==false){
+            $this->redirect("/mvc/public/home");
+        }
+    }
+
 	public function index(){
 		$m = $this->model('Post')->all();
 		$this->render('post/index',['items' => $m]);

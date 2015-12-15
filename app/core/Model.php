@@ -78,4 +78,9 @@ class Model{
         return $this->query("DELETE FROM $this->table where id = ?",$id);
     }
 
+    public function count(){
+        $fuck =  $this->query("select count(*) as count from $this->table");
+        return $fuck[0]['count'];
+    }
+
 }

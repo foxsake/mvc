@@ -9,21 +9,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/mvc/public"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></a>
+      <a class="navbar-brand" href="/mvc/public"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>Hot News!</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       
-        
+        <?php if(isset($_SESSION['admin'])&&$_SESSION['admin']==true):?>
+          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/admin/') echo "class = 'active'";?>><a href="/mvc/public/admin"><strong>Home</strong></a></li>
+          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/categ') echo "class = 'active'";?>><a href="/mvc/public/categ"><strong>Categories</strong></a></li>
+          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/posts') echo "class = 'active'";?>><a href="/mvc/public/posts"><strong>Posts</strong></a></li>
+          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/users') echo "class = 'active'";?>><a href="/mvc/public/users"><strong>Users</strong></a></li>
+        <?php else:?>
         <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/') echo "class = 'active'";?>><a href="/mvc/public/"><strong>Home</strong></a></li>
 
         <?php foreach($cats as $cat):?>
-          <li <?php if( preg_match('@/mvc/public/home/category*@', $_SERVER['REQUEST_URI']) == 1) echo "class = 'active'";?>><a href="/mvc/public/home/category/<?php echo $cat['id']?>"><strong><?php echo $cat['name']?></strong></a></li>
+          <li <?php if( preg_match('@/mvc/public/home/category/'.$cat['id'].'@', $_SERVER['REQUEST_URI']) == 1) echo "class = 'active'";?>><a href="/mvc/public/home/category/<?php echo $cat['id']?>"><strong><?php echo $cat['name']?></strong></a></li>
         <?php endforeach ?>
 
         <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/home/about') echo "class = 'active'";?>><a href="/mvc/public/home/about"><strong>About Us</strong></a></li>
+      <?php endif?>
       </ul>
       <!--
       <form class="navbar-form navbar-left" role="search" action="items.php" method="get" autocomplete="off">

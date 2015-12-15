@@ -69,6 +69,9 @@ class Controller{
             //for news only....
             $m = $this->model('Category');
             $values += ['cats'=>$m->all()];
+
+            $ban = $this->model('Settings')->get_banner();
+            $values += ['banner'=>$ban];
             
             // extract variables into local scope
             extract($values);

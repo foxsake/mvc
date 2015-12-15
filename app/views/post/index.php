@@ -11,8 +11,8 @@
 <?php foreach ($items as $item):?>  
   <tr>
     <td><?php print($item["title"])?></td>
-    <td><a href="/mvc/public/posts/edit/<?php print($item["id"])?>" class="btn btn-warning">Edit</a><td>
-    <td><a href="/mvc/public/posts/delete/<?php print($item["id"])?>" class="btn btn-danger">Delete</a><td>
+    <td><a href="/mvc/public/posts/edit/<?php print($item["id"])?>" class="btn btn-warning">Edit</a></td>
+    <td><a href="/mvc/public/posts/delete/<?php print($item["id"])?>" class="btn btn-danger">Delete</a></td>
   </tr>      
 <?php endforeach ?>
 </table>

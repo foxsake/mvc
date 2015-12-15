@@ -3,6 +3,12 @@
 
 class Users extends Controller{
 
+	public function __construct(){
+        if(isset($_POST["admin"])&& $_POST["admin"]==false){
+            $this->redirect("/mvc/public/home");
+        }
+    }
+
 	public function index(){
 		$m = $this->model('User')->all_na();
 		$this->render('user/index',['items' => $m]);

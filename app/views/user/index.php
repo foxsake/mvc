@@ -17,7 +17,7 @@
     	<?php else: ?>
     		<a href="/mvc/public/users/unban/<?php print($item["id"])?>" class="btn btn-success">UNBAN</a>
     	<?php endif ?>
-    <td>
+    </td>
   </tr>      
 <?php endforeach ?>
 </table>

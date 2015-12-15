@@ -3,6 +3,12 @@
 
 class Categ extends Controller{
 
+	public function __construct(){
+        if(isset($_POST["admin"]) && $_POST["admin"]==false){
+            $this->redirect("/mvc/public/home");
+        }
+    }
+
 	public function index(){
 		$m = $this->model('Category')->all();
 		$this->render('category/index',['items' => $m]);
@@ -13,18 +19,23 @@ class Categ extends Controller{
 	}
 	public function store(){
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if($this->model('Category')->count() < 5){
         	// validate submission
 	        if (empty($_POST["name"])){
 	            $this->apologize("You must provide category name.");
 	        }
 	       $game = $this->model('Category');
 	       $res = $game->insert($_POST["name"]);
+
 	       if(!$res){
 	       	print_r('success!');
 	       }else{
 	       	print_r('failed!');
 	       }
+	    }else{
+	    	print_r("you cant add anymore categories.");
 	    }
+	}
 	}
 	public function edit($id){
 		$item = $this->model('Category')->get($id);

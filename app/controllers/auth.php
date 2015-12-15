@@ -51,7 +51,8 @@ class Auth extends Controller{
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["admin"] = $row["admin"];
-
+                if($_SESSION["admin"]==true)
+                    $this->redirect("/mvc/public/amdin/");
                 $this->redirect("/mvc/public");
             }
         }

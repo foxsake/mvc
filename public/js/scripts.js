@@ -1,48 +1,22 @@
 $(document).ready(function(){
 
-	loadCart();
-
-	var items = new Bloodhound({
-		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('q'),
-		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		remote: {
-			url: 'autocomp.php?q=%QUERY',
-			wildcard: '%QUERY'
-		}
-	});
-
-	items.initialize();
-
-	$('#qry').typeahead({
-		hint: true,
-		highlight: true,
-		minLength: 1//3
-	},{
-		name: 'items',
-		displayKey: 'name',
-		source: items.ttAdapter()
-	});
-
 	$('.trunwrap').dotdotdot({
-		/*	The text to add as ellipsis. */
 		ellipsis	: '... ',
- 
-		/*	How to cut off the text/html: 'word'/'letter'/'children' */
 		wrap		: 'word',
- 
-		/*	Wrap-option fallback to 'letter' for long words */
-		fallbackToLetter: true,
- 
-		/*	jQuery-selector for the element to keep and put after the ellipsis. */
+		fallbackToLetter: true,		
 		after		: null,
- 
-		/*	Whether to update the ellipsis: true/'window' */
-		watch		: false,
-	
-		/*	Optionally set a max-height, if null, the height will be measured. */
+		watch		: false,		
 		height		: 30,
- 
-		/*	Deviation for the height-option. */
+		tolerance	: 0,
+	});
+
+	$('.saranwrap').dotdotdot({
+		ellipsis	: '... ',
+		wrap		: 'word',
+		fallbackToLetter: true,
+		after		: null,
+		watch		: false,
+		height		: 80,
 		tolerance	: 0,
 	});
 	
@@ -70,14 +44,6 @@ $(document).ready(function(){
 		return false;
 	});	
 
-	$('#cart').click(function(){
-		$('#cartModal').modal('toggle');
-	});
-
-	$('#chkout').click(function(){
-		checkout();
-	});
-
 });
 
 function addParam(param, value) {
@@ -91,59 +57,3 @@ function addParam(param, value) {
     window.location.href = a.href;
 }
 
-function addToCart(id){
-
-	$.ajax({
-			url: "cart.php",
-			type: "POST",
-			data: "add="+id,
-			success: function(response){
-				//alert(response);
-				loadCart();
-				// $('#cartContents').html(response);
-				$('#cartModal').modal('show');
-			}
-		});
-}
-
-function subFromCart(id){
-
-	$.ajax({
-			url: "cart.php",
-			type: "POST",
-			data: "sub="+id,
-			success: function(response){
-				//alert(response);
-				loadCart();
-				// $('#cartContents').html(response);
-				//$('#cartModal').modal('show');
-			}
-		});
-}
-
-function loadCart(){
-	$.ajax({
-			url: "cart.php",
-			type: "GET",
-			success: function(response){
-				if(response)
-					$('#cartContents').html(response);
-				//$('#cartModal').modal('show');
-			}
-		});
-}
-
-function checkout(){
-	$.ajax({
-			url: "cart.php",
-			type: "POST",
-			data: "send="+true,
-			success: function(response){
-				alert(response);
-				loadCart();
-				//$('#cartContents').html(response);
-				// $('#cartContents').html(response);
-				// $('#cartModal').modal('show');
-			}
-		});
-}
