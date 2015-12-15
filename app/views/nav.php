@@ -17,30 +17,13 @@
       <ul class="nav navbar-nav">
       
         
+        <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/') echo "class = 'active'";?>><a href="/mvc/public/"><strong>Home</strong></a></li>
 
-        <?php if(!empty($_SESSION["id"])):?>
-        <li class="dropdown <?php if( preg_match('@/mvc/public/gamess*@', $_SERVER['REQUEST_URI']) == 1) echo "active";?>" id="itemlink">
-          <a href="/mvc/public/games/" role="button" aria-haspopup="true" aria-expanded="false">Game <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li><a href="/mvc/public/games/">Current Games</a></li>
-            <li><a href="/mvc/public/games/ended">Ended Games</a></li>
-            <li role="separator" class="divider"></li>
-            
-            <li><a href="/mvc/public/games/create">Add</a></li>
-          </ul>
-        </li>
+        <?php foreach($cats as $cat):?>
+          <li <?php if( preg_match('@/mvc/public/home/category*@', $_SERVER['REQUEST_URI']) == 1) echo "class = 'active'";?>><a href="/mvc/public/home/category/<?php echo $cat['id']?>"><strong><?php echo $cat['name']?></strong></a></li>
+        <?php endforeach ?>
 
-        <li class="dropdown <?php if( preg_match('@/mvc/public/team*@', $_SERVER['REQUEST_URI']) == 1) echo "active";?>" id="itemlink">
-          <a href="/mvc/public/team/" role="button" aria-haspopup="true" aria-expanded="false">Team <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/mvc/public/team/create">Add</a></li>
-          </ul>
-        </li>
-        <?php else:?>
-          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/') echo "class = 'active'";?>><a href="/mvc/public/"><strong>Home</strong></a></li>
-          <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/home/ended') echo "class = 'active'";?>><a href="/mvc/public/home/ended"><strong>Ended</strong></a></li>
-        <?php endif ?>
-
+        <li <?php if($_SERVER['REQUEST_URI']=='/mvc/public/home/about') echo "class = 'active'";?>><a href="/mvc/public/home/about"><strong>About Us</strong></a></li>
       </ul>
       <!--
       <form class="navbar-form navbar-left" role="search" action="items.php" method="get" autocomplete="off">

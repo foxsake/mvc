@@ -45,10 +45,13 @@ class Auth extends Controller{
             // compare hash of user's input against hash that's in database
             if (crypt($_POST["password"], $row["hash"]) == $row["hash"]){
                 // remember that user's now logged in by storing user's ID in session
+                if($row["banned"]==true){
+                    $this->apologize('Sorry, It Seems You had been banned!');
+                }
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
+                $_SESSION["admin"] = $row["admin"];
 
-                // redirect to portfolio
                 $this->redirect("/mvc/public");
             }
         }

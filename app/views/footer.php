@@ -1,7 +1,7 @@
             </div>
 
             <div id="bottom">
-                Copyright &#169; ####
+                Paul,Lea,Kaiser,Roger - BSIT 4-1 - WEB!
             </div>
 
         </div>

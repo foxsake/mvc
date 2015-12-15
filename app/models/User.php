@@ -17,5 +17,17 @@ class User extends Model{
 		return $this->query("INSERT INTO users(username, hash) VALUES(?,?)",$username , $hash);
 	}
 
+	public function ban($id){
+		return $this->query("update $this->table set banned = true where id = ?",$id);
+	}
+
+	public function unban($id){
+		return $this->query("update $this->table set banned = false where id = ?",$id);
+	}
+
+	public function all_na(){
+		return $this->query("SELECT * FROM $this->table WHERE admin = false");
+	}
+
 	
 }

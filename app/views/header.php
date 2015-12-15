@@ -9,9 +9,9 @@
         <link href="/mvc/public/css/pgwslider.min.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
-            <title>Live Scoring: <?= htmlspecialchars($title) ?></title>
+            <title>News: <?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>Live Scoring</title>
+            <title>News</title>
         <?php endif ?>
 
         <script src="/mvc/public/js/jquery.min.js"></script>

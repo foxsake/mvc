@@ -66,6 +66,10 @@ class Controller{
     {
         // if template exists, render it
         if (file_exists('../app/views/'.$template.'.php')){
+            //for news only....
+            $m = $this->model('Category');
+            $values += ['cats'=>$m->all()];
+            
             // extract variables into local scope
             extract($values);
 
