@@ -41,13 +41,19 @@ class Home extends Controller{
 	}
 
 	public function refreshcomment($id){
-
 		print_r(json_encode($this->model('Comment')->comments($id)));
 	}
 
 	public function search(){
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$m = $this->model('Post')->search($_POST["search"]);
+			$this->render('home/index',['items'=>$m]);
+		}
+	}
+
+	public function date(){
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			$m = $this->model('Post')->date($_POST["date"]);
 			$this->render('home/index',['items'=>$m]);
 		}
 	}

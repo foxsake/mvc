@@ -1,23 +1,11 @@
 $(document).ready(function(){
 
-	$('.trunwrap').dotdotdot({
-		ellipsis	: '... ',
-		wrap		: 'word',
-		fallbackToLetter: true,		
-		after		: null,
-		watch		: false,		
+	$('.trunwrap').dotdotdot({	
 		height		: 30,
-		tolerance	: 0,
 	});
 
 	$('.saranwrap').dotdotdot({
-		ellipsis	: '... ',
-		wrap		: 'word',
-		fallbackToLetter: true,
-		after		: null,
-		watch		: false,
 		height		: 80,
-		tolerance	: 0,
 	});
 	
 	$('form.ajax').on('submit',function(){

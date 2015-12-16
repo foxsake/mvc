@@ -11,3 +11,6 @@
         </div>
     </fieldset>
 </form>
+<div>
+    or <a href="/mvc/public/auth/register">Register</a>
+</div>

@@ -10,7 +10,9 @@ class Admin extends Controller{
     }
 
 	public function index(){
-		$this->render('admin/index');
+		$curtheme = $this->model('Settings')->get_theme();
+		$layouts = $this->model('Settings')->get_layout();
+		$this->render('admin/index',['layouts'=>$layouts,'curtheme'=>$curtheme]);
 	}
 
 	public function banner(){
@@ -44,6 +46,28 @@ class Admin extends Controller{
 			print_r("Banner Set!");
 		}else{
 			print_r("not set");
+		}
+	}
+
+	public function theme(){
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			$suc = $this->model('Settings')->set_theme($_POST['theme']);
+			if($suc){
+				print_r('failed');
+			}else{
+				print_r('theme changed');
+			}
+		}
+	}
+
+	public function layout(){
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			$suc = $this->model('Settings')->set_layout($_POST['layout']);
+			if($suc){
+				print_r('failed');
+			}else{
+				print_r('layout changed');
+			}
 		}
 	}
 }

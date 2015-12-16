@@ -72,5 +72,21 @@ class Post extends Model{
 				where post.title = ?
 				",$search);
 	}
+
+	public function date($date){
+		return $this->query("
+				select SQL_CALC_FOUND_ROWS post.id, post.title,post.content,post.posted, images.image
+                from $this->table
+                join images
+                on images.id = 
+                    (
+                        select images.id
+                        from images
+                        where images.postid = post.id
+                        limit 1
+                    ) 
+				where CAST(post.posted as DATE) = ?
+				",$date);
+	}
 	
 }

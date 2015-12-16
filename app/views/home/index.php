@@ -1,33 +1,35 @@
 <div class="row">
   <div class="col-md-3">
-    <p class="lead">Widgets</p>
-    <form class="form-horizontal" role="search" action="/mvc/public/home/search" method="post" autocomplete="off">
+    <p class="lead">Search Title</p>
+    <form class="form-horizontal" role="search" action="/mvc/public/home/search" method="post">
         <div class="form-group">
           <input type="text" class="form-control" name="search" placeholder="Search">
           <button type="submit" class="btn btn-default">Submit</button>
         </div>
     </form>
+    <p class="lead">Date</p>
+    <form action="/mvc/public/home/date" method="post">
+      <input type="date" name="date" class="form-control">
+      <input type="submit" class="btn btn-default">
+    </form>
 </div>
-  
 
 <div class="col-md-9">
 <div class="row" id="changeme">
 <?php foreach ($items as $item):?>        
-          <div>
-            <div class="thumbnail">
-              <img src="/mvc/public/uploads/<?php print($item['image']) ?>" alt="<?php print($item["title"]) ?>">
-              <div class="caption">
-                <a href="/mvc/public/home/post/<?php print($item["id"])?>"><h5 class="trunwrap"><?php print($item["title"])?></h5></a>
-                <p class="text-right">
-                    <?php print($item["posted"]);?>
-                </p>
-                <p class="saranwrap">
-                    <?php print($item["content"]);?>
-                </p>
-                <a href="/mvc/public/home/post/<?php print($item["id"])?>">Read More..</a>
-              </div>
-            </div>
-          </div>
+  <div class="thumbnail">
+    <img src="/mvc/public/uploads/<?php print($item['image']) ?>" alt="<?php print($item["title"]) ?>">
+    <div class="caption">
+      <a href="/mvc/public/home/post/<?php print($item["id"])?>"><h5 class="trunwrap"><?php print($item["title"])?></h5></a>
+      <p class="text-right">
+          <?php print($item["posted"]);?>
+      </p>
+      <p class="saranwrap">
+          <?php print($item["content"]);?>
+      </p>
+      <a href="/mvc/public/home/post/<?php print($item["id"])?>">Full article</a>
+    </div>
+  </div>
 <?php endforeach ?>
 </div>
 
